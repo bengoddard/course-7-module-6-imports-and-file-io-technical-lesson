@@ -42,7 +42,8 @@ To get started, clone the repository and install any necessary requirements:
 ```bash
 git clone <repo-url>
 cd course-7-module-6-imports-and-file-io
-pip install -r requirements.txt
+pipenv install
+pipenv shell
 ```
 
 Now, let's define the structure of our logger module.
@@ -90,9 +91,9 @@ def search_logs(keyword, log_file="data/user_logs.txt"):
 - Filters matching lines using a list comprehension.  
 - Gracefully handles missing files.
 
-### Building the CLI Entry Point
+### CLI Entry Point
 
-We will use `argparse` to allow users to log actions or search logs from the terminal.
+We are currently using `argparse` to allow users to log actions or search logs from the terminal.
 
 #### Example: `main.py`
 
@@ -122,6 +123,22 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+If you run `python lib/main.py`, you should see a list of the commands you can run:
+* log
+* search
+
+Try running these in the terminal, such as:
+`python lib/main.py log "testing code"`
+`python lib/main.py log "deploying code"`
+`python lib/main.py log "patching code"`
+
+If you search for 'code'you should see all of these printed to the terminal:
+`python lib/main.py search "code"`
+
+If you search for 'deploying' or 'testing' however, you will only see the one that includes that word.
+
+You should also be able to view your logs in `data/user_logs.txt`.
 
 ## Best Practices for File I/O and Imports
 
